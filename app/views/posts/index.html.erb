@@ -1,0 +1,21 @@
+<div class="container">
+  <h1 class="text-center">Publicaciones</h1>
+  <% if user_signed_in? %>
+    <%= link_to "Nueva Publicación", new_post_path, class: "btn btn-success btn-lg my-2" %>
+  <% end %>
+  <div id="posts" class="row">
+    <% @posts.each do |post| %>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <% if post.images.attached? %>
+            <%= image_tag post.images, class: "card-img-top", style: "max-height:300px; object-fit: cover;" %>
+          <% end %>
+          <div class="card-body">
+            <p class="card-text"><%= post.comentario %></p>
+            <%= link_to "Ver esta publicación", post, class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

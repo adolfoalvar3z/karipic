@@ -1,0 +1,28 @@
+<%= form_with(model: post, class: "card", data: { turbo_frame: "form" }) do |form| %>
+  <% if post.errors.any? %>
+    <div class="card-body bg-danger text-white">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <ul>
+        <% post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="card-body">
+    <div class="mb-3">
+      <%= form.label :images, class: "form-label" %>
+      <%= form.file_field :images, class: "form-control", accept: "image/png, image/jpeg, image/jpg, image/gif" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :comentario, class: "form-label" %>
+      <%= form.text_area :comentario, class: "form-control" %>
+    </div>
+
+    <div>
+      <%= form.submit class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
